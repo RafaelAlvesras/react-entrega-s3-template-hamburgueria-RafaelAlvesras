@@ -7,12 +7,12 @@ export function Modal({ setIsOpen, setListCart, listCart, setCountCart}) {
 
     function deleteProductCart(productId) {
         setListCart((listCart) => listCart.filter(pro => pro.id !== productId))
-        setCountCart((prevCount) => prevCount - 1);
+        setCountCart((prevCount) => prevCount - 1)
     }
 
     function deleteAllCart() {
         setListCart([])
-        setCountCart(0);
+        setCountCart(0)
     }
 
 
@@ -27,7 +27,7 @@ export function Modal({ setIsOpen, setListCart, listCart, setCountCart}) {
 
         const handleKeyPress = (event) => {
             if (event.key === "Escape") {
-                setIsOpen(false);
+                setIsOpen(false)
             }
         }
 
@@ -58,7 +58,7 @@ export function Modal({ setIsOpen, setListCart, listCart, setCountCart}) {
                                         <img className="productImg" src={product.img} alt="imagem ilustrativa do produto" />
                                         <div className="namePriceDiv">
                                             <h2>{product.name}</h2>
-                                            <p className="price">{product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+                                            <p className="price">{product.price.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</p>
                                         </div>
                                         <button className="trashButton" onClick={() => deleteProductCart(product.id)}><img src={trash} alt="botão com imagem de lixeira" /></button>
                                     </StyledCard>)

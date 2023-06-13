@@ -2,8 +2,11 @@ import { useEffect, useState } from "react"
 import { api } from "../../../../services/api.js"
 import { StyledCard } from "../ProductsCard/StyledCard.js"
 import { StyledSpinner } from "./StyledSpinner.js"
+import { toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
-export function ProductsCard({ setCountCart, listCart, setListCart, setProducts, products, searchProducts}) {
+
+export function ProductsCard({ setCountCart, listCart, setListCart, setProducts, searchProducts}) {
     
     const [isLoading, setIsLoading] = useState(true)
 
@@ -12,7 +15,7 @@ export function ProductsCard({ setCountCart, listCart, setListCart, setProducts,
 
         async function loadData() {
             try{
-                const response = await api.get('/products')
+                const response = await api.get("/products")
                 
                 setProducts(response.data)
             } catch {
@@ -27,10 +30,10 @@ export function ProductsCard({ setCountCart, listCart, setListCart, setProducts,
     const handleAddToCart = (product) => {
         const existingProduct = listCart.find((item) => item.id === product.id)
         if (existingProduct) {
-          alert("Item já existe no carrinho");
+          toast.error("Item já existe no carrinho",{ autoClose: 900 })
         } else {
-          setListCart((listCart) => [...listCart, product]);
-          setCountCart((prevCount) => prevCount + 1);
+          setListCart((listCart) => [...listCart, product])
+          setCountCart((prevCount) => prevCount + 1)
         }
     }
 
@@ -47,7 +50,7 @@ export function ProductsCard({ setCountCart, listCart, setListCart, setProducts,
                 <div>
                     <h2>{product.name}</h2>
                     <p className="category">{product.category}</p>
-                    <p className="price">{product.price.toLocaleString('pt-BR', {style:'currency' , currency: 'BRL'})}</p>
+                    <p className="price">{product.price.toLocaleString("pt-BR", {style:"currency" , currency: "BRL"})}</p>
                     <button onClick={() => handleAddToCart(product)}>Adicionar</button>
                 </div>
             </StyledCard>
