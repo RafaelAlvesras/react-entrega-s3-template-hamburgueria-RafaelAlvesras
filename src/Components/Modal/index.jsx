@@ -3,7 +3,7 @@ import { StyledModal } from "./StyledModal"
 import trash from "../../assets/img/trash.png"
 import { StyledCard } from "./CardModal.js"
 
-export function Modal({ setIsOpen, setListCart, listCart, setCountCart}) {
+export function Modal({ setIsOpen, setListCart, listCart, setCountCart }) {
 
     function deleteProductCart(productId) {
         setListCart((listCart) => listCart.filter(pro => pro.id !== productId))
@@ -33,10 +33,10 @@ export function Modal({ setIsOpen, setListCart, listCart, setCountCart}) {
 
         window.addEventListener("mousedown", handleOutclick)
         window.addEventListener("keydown", handleKeyPress)
-      
+
         return () => {
-          window.removeEventListener("mousedown", handleOutclick)
-          window.removeEventListener("keydown", handleKeyPress)
+            window.removeEventListener("mousedown", handleOutclick)
+            window.removeEventListener("keydown", handleKeyPress)
         }
     }, [])
 
@@ -52,7 +52,7 @@ export function Modal({ setIsOpen, setListCart, listCart, setCountCart}) {
                 <div className="divCartList">
                     <ul className="listCartSection">
                         {
-                            listCart.length == 0 ? <div className="noProducts"><h2>Nenhum produto cadastrado</h2></div> :
+                            listCart.length == 0 ? <div className="noProducts"><h2>🥹 Seu carrinho está vazio...🥹</h2></div> :
                                 listCart.map((product) =>
                                     <StyledCard key={product.id}>
                                         <img className="productImg" src={product.img} alt="imagem ilustrativa do produto" />

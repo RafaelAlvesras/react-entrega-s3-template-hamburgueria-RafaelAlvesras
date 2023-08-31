@@ -1,12 +1,23 @@
-import styled from "styled-components"
+import styled, { keyframes } from 'styled-components';
+
+const slideIn = keyframes`
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+`
 
 export const StyledModal = styled.div`
     display: flex;
     width: 100%;
     height: 100vh;
     position: absolute;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
+    background-color: rgba(0, 0, 0, 0.25);
+    
 
     .modal {
         display: flex;
@@ -15,13 +26,15 @@ export const StyledModal = styled.div`
         align-items: center;
         padding: 0;
 
-        width: 29.25rem;
+        width: 90%;
+        max-width: 29.25rem;
         height: 27.6875rem;
 
-        background: white;
+        background-color: white;
 
         border: 1px solid #F5F5F5;
-        border-radius: 0px 0px 5px 5px;
+        border-radius:12px;
+        animation: ${slideIn} 0.3s ease-in-out;
     }
 
     .noProducts {
@@ -42,9 +55,8 @@ export const StyledModal = styled.div`
 
         width: 100%;
         height: 3.375rem;
-
         background: #27AE60;
-        border-radius: 0.3125rem 0.3125rem 0rem 0rem;
+        border-radius: 0.75rem 0.75rem 0rem 0rem;
 
         color: white;
     }
